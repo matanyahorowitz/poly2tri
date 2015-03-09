@@ -13,7 +13,10 @@ set(SOURCE_FILES poly2tri/common/shapes.cc
                  poly2tri/sweep/sweep_context.cc)
 
 include_directories(${CMAKE_SOURCE_DIR}/poly2tri)
-add_library(Poly2Tri ${SOURCE_FILES})
+
+add_library(Poly2Tri SHARED
+  ${SOURCE_FILES}
+)
 
 add_executable(p2t 
   testbed/main.cc
@@ -24,11 +27,11 @@ target_link_libraries(p2t
   ${GLFW_STATIC_LIBRARIES}
 )
 
-install (TARGETS 
-  p2t 
-  Poly2Tri 
-DESTINATION 
-  <dir>/../build
-)
+# install (TARGETS 
+#   p2t 
+#   Poly2Tri 
+# DESTINATION 
+#   <dir>/../build
+# )
 
-install (FILES poly2tri.h DESTINATION <dir>/../build)
+# install (FILES poly2tri.h DESTINATION <dir>/../build)
